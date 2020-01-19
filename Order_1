@@ -1,0 +1,8 @@
+class Order1
+	{
+	public static void main(String args[])
+	{
+
+	System.out.println("Hellow Word");//statement execute only ones so time complecity=O(1)
+}
+}
