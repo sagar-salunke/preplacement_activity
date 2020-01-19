@@ -1,0 +1,66 @@
+import java.util.*;
+class Matrix_Multiplication
+	{
+	public static void main(String args[])
+	{
+
+	System.out.println("how many rows and colums you want(1st matrix)=");
+	Scanner sc=new Scanner(System.in);	
+	int r=sc.nextInt();
+	int c=sc.nextInt();
+	System.out.println("enter first matrix"); 	
+	int a[][] = new int[r][c];	//decleration of first array	
+	for(int i=0;i<r;i++)
+	{
+	for(int j=0;j<c;j++)
+	{
+	a[i][j]=sc.nextInt();
+	}
+	System.out.println();
+        }
+	System.out.println("how many rows and colums you want(2nd matrix)=");		
+	int r1=sc.nextInt();
+	int c1=sc.nextInt();
+	System.out.println("enter 2st matrix");
+	int b[][] = new int[r1][c1];	//decleration of second array
+	int sum=0;	
+	for(int i=0;i<r1;i++)
+	{
+	for(int j=0;j<c1;j++)
+	{	
+	b[i][j]=sc.nextInt();
+	}
+	System.out.println();
+	}
+	int d[][] = new int[r][c1];
+		if(c!=r1)
+		{
+		System.out.println("Matrix multiplication is not possibal");//becouse colums of 1st matrix != rows of 2nd matrix
+		}
+	        else
+		{
+			for(int i=0;i<r;i++)
+			{
+			for(int j=0;j<c1;j++)
+			{
+			for(int k=0;k<c;k++)
+			{
+		      
+			d[i][j]=d[i][j]+a[i][k]*b[k][j];
+			
+			}
+			}				
+			}	
+	         
+	System.out.println("--------Multiplication of matrix---------");
+	for(int i=0;i<r;i++)
+	{
+	for(int j=0;j<c1;j++)
+	{	
+	System.out.print("  \t            "+d[i][j]);
+	System.out.print("");
+	}System.out.println();		
+	}
+	}
+}
+}
