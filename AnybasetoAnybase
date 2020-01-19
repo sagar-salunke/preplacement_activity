@@ -1,0 +1,68 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+#include<math.h>
+int main()
+{
+int x,y;
+char str[20];
+printf("enter string you wanted to  convert=\n");
+scanf("%s",str);
+
+printf("enter value of x(base of string)=\n");
+scanf("%d",&x);
+
+printf("enter value of y(convert into)=\n");
+scanf("%d",&y);
+
+if(x==10)
+decimal_to_y(str,y);
+else if(x!=10)
+x_to_decimal(str,x,y);
+}
+//convert Decimal to any base 
+void decimal_to_y(char str[],int y)
+    {
+int i=0,a[20],rem=0,j,b,st,d;
+d=atoi(str);
+while(d!=0)
+{
+rem=d%y;
+a[i]=rem;
+d=d/y;
+i++;
+}
+for( j=i-1;j>=0;j--)
+  {
+ if(a[j]>9)
+    {
+      st=a[j]+55;
+      printf("%c",st);
+    }
+ else 
+  printf("%d",a[j]);
+}
+}
+// convert to any base to decimal
+void x_to_decimal(char str[],int x,int y)
+{
+	  int j=0,sum=0,in,i;
+	  char strr[20];
+	    for(i=strlen(str)-1;i>=0;i--)
+	    {
+	      if(str[i]>='0'&&str[i]<='9')
+	      {
+	        in=(int)(str[i]-'0');
+	        sum=sum+(pow(x,j)*in);
+	        j++;
+	      }
+	      else if(str[i]>='A'&&str[i]<='Z')
+	      {
+	        in=(int)(str[i]-55);
+	        sum=sum+(pow(x,j)*in);
+	        j++;
+	      }
+ 	   }
+    itoa(sum,strr,10);
+    decimal_to_y(strr,y);
+}
