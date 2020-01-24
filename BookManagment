@@ -1,0 +1,141 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include <assert.h>
+struct node
+	 	{
+		char book[10];
+		struct node *next;
+		};
+	
+
+struct node* create();
+
+void traverce(struct node *head);
+void search(struct node *head);
+void search(struct node *head);
+void display(struct node *head);
+void main()
+{
+struct node *head=NULL;
+while(1)
+{
+	
+	int n=1,ch;
+	printf("\n1.create of book list");
+	printf("\n2 traverce throw book list=");			
+	printf("\n3.search book from list");
+	printf("\n4.Display book list=");		
+	printf("\n5.exit");
+	printf("\nenter your choies");
+	scanf("%d",&ch);
+	switch(ch)
+	{
+	case 1:
+		head=create();
+		break;
+	case 2: 
+		traverce(head);		
+		break; 
+	case 3:
+		search(head);						
+		break;
+	case 4:
+				
+		display(head);		
+		break;
+	case 5: 	
+                exit(0);
+		
+	default:
+		printf("\nenter valid choies=");
+			
+	}
+
+}
+}
+
+
+struct node* create()
+{
+	int n,i=0;
+
+	struct node *head=NULL,*new=NULL,*temp=NULL;
+	printf("\nhow many book you want to store=");
+	scanf("%d",&n);
+	while(i<n)
+	{
+	//return void pointer we typecast it (becouse we going to store it pointervariable)and store in to pointer variable and assigne      		variable
+	new=(struct node*)malloc(sizeof(struct node));
+	printf("enter node=\n");
+	scanf("%s",new->book);
+
+	new->next=NULL;
+	if(head==NULL)
+	{
+	head=new;
+	temp=new;
+	}
+	else
+	{
+	temp->next=new;
+	temp=new;
+	}
+	i++;
+	}
+printf("\n====================================");
+
+return head;
+}
+void display(struct node *head)
+{
+	struct node *temp;
+	temp=head;
+	while(temp != NULL)
+	{
+	//printf("hi");
+	printf("\n\t%s",temp->book);
+	temp=temp->next;
+	}
+	printf("\n====================================");
+
+}
+void traverce(struct node *head)
+{
+
+	struct node *traverse;
+	int i=0;
+	traverse=head;
+	while(traverse!=NULL)
+	{
+	i++;
+	traverse=traverse->next;
+	}
+	printf("\ntotal count of book is =%d",i);
+	printf("\n====================================");
+}
+void search(struct node* head)
+{
+	int i=0;
+ 	struct node* temp;
+	temp=head;	
+	struct node *new;
+	new=(struct node*)malloc(sizeof(struct node));
+	printf("enter node=\n");
+	scanf("%s",new->book);
+	new->next=NULL;
+	while(temp!=NULL)
+	{
+	if((temp->book)==(new->book))
+	{	
+	printf("book is present at %d location",i);
+	break;
+	}
+	else
+	{	
+	printf("\nbook is not found");	
+	break;	
+	}
+	temp=temp->next;
+	i++;
+	}
+}
