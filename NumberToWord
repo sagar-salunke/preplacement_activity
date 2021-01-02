@@ -1,0 +1,73 @@
+import java.util.*;
+class NumberToWord
+{
+static String fun(int no)
+{
+String str="";
+
+String Units[]={" ","one","two","three","four","five","six","seven","eight","nine","ten","eleven",
+"twelve","thirteen","fourteen","fifteen","sixteen","seventeen","eighteen","nineteen"};
+
+String tens[]={"","","twenty ","thirty ","forty ","fifty ","sixty ","seventy ","eighty ","ninety " };  
+// first i have try for less than 100 number. take two string array one for to store units and another to store tens using this two array
+//combination we can eassily find numbertoword
+if(no<20) // less than 20 element
+{
+//on the basis of index we retrive the value store on that index 
+str=Units[no];  
+}
+else if (no>=20 && no<100)
+{
+//using devision oprator we got quotient and using modulus oprator we got remender and using this we retrive spacific index value
+str = tens[no/10]+Units[no%10];
+}
+return str;
+}
+static String Convert(int num)
+{
+String str2="";
+
+if(num<100)
+{
+str2=fun(num);
+}
+else if(num>=100 && num<1000)
+{
+str2 = fun(num/100) + " Hundred and " + Convert(num%100);     // for Hundred 
+}
+else if(num>=1000 && num<100000)
+{
+str2 = fun(num/1000) + " Thousand " + Convert(num%1000);      // for Thousand
+}
+else if(num>=100000 && num<10000000)
+{
+str2 = fun(num/100000) + " Lakh " + Convert(num%100000);     // for lakh
+}
+else if(num>=100000 && num<10000000)                        // for crore
+{
+str2 = fun(num/10000000) + " crore " + Convert(num%10000000);
+}
+
+return str2;
+
+}
+
+public static void main(String args[])
+{
+Scanner sc=new Scanner(System.in);
+System.out.print("Enter Number Number(Which convert into Word)=");
+//accept double value from user
+double no=sc.nextDouble(); 
+//do I separate the part after a decimal point in any value
+int b = (int) no;
+no=no-b;
+//in fl variable we get the after a decimal value
+int fl =(int)(no*100);
+
+//calling convert function
+String Ans=Convert(b);
+
+System.out.println("\"Rs." + Ans +" "+fl+ "/100 ONLY\"");
+
+}
+}
